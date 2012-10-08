@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Formulario de Contacto{% endblock %}
+{% block media_css %}
+<link rel="stylesheet" type="text/css" href="/static/css/contact_style.css">
+{% endblock %}
+
+{% block content %}
+    {% if enviado  %}
+        Gracias por enviar tu comentario.
+        <p>Datos Recibidos:</p>
+        <p>email: {{ email }}</p>
+        <p>titulo: {{ titulo }}</p>
+        <p>cuerpo: {{ cuerpo }}</p>
+    {% else %}
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Enviar">
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,18 @@
+.latest{
+    margin-top: 50px;
+}
+
+.derechos{
+    margin-top: 10px;
+    border-top: 2px solid #E10000;
+}
+
+.navbar-inverse .nav .active > a:hover{
+    background-color: red;
+}
+
+/* login */
+.loginform{
+    padding: 10px;
+    border: 1px solid #e10000;
+}

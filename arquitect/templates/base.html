@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/static/bootstrap/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css">
+    {% block media_css %}{% endblock %}
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <!-- <div class="container-fluid">
+            <a class="brand" href="/">Arquitect</a>
+            <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+                {% if user.is_authenticated %}
+                Bienvenido <a href="#" class="navbar-link">{{ user.username }}</a>
+                <a href="/logout/" class="navbar-link">[Logout, My Profile]</a>
+                {% else %}
+                <a href="/login/" class="navbar-link">[Login or Register]</a>
+                {% endif %}
+            </p>
+            <ul class="nav">
+              <li class="active"><a href="/">Inicio</a></li>
+              <li><a href="#about">Sobre</a></li>
+              <li><a href="/contacto/">Contacto</a></li>
+            </ul>
+          </div>
+          </div> -->
+          <div class="top_nav span9 container-fluid offset2">
+            <ul class="nav">
+              <li><a class="brand" href="/">Arquitect</a></li>
+              <li class="active"><a href="/">Inicio</a></li>
+              <li><a href="#about">Sobre</a></li>
+              <li><a href="/contacto/">Contacto</a></li>
+              <div class="login span1 offset4">
+                <ul class="nav">
+                  <li class="active">
+                    <!-- <a id="login" href="#">Login</a> -->
+                    <a data-toggle="modal" data-target="#loginModal" href="/login/" >Login</a>
+ <div class="modal hide fade" id="loginModal">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Login Form</h3>
+  </div>
+  <div class="modal-body"><!-- el contenido viene de login.html --></div>
+  <div class="modal-footer"> </div>
+  </div>
+            </div>
+                  </li>
+                  <script type="text/javascript">
+                    $('#loginModal').modal({
+                        remote: true
+                    })
+                  </script>
+                </ul>
+                </div>
+            </ul>
+          </div>
+          <div class="span2"></div>
+    </div>
+    <div class="container-fluid offset2">
+        <div class="row-fluid">
+            <div class="span7">
+                {% block content %}{% endblock %}
+            </div><!-- end photos -->
+            <div class="span3">
+            <div class="well sidebar-nav">
+              <ul class="nav nav-list">
+                <li class="nav-header">Sidebar</li>
+                <li class="active"><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li class="nav-header">Sidebar</li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li class="nav-header">Sidebar</li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+              </ul>
+            </div><!--/.well -->
+        </div><!--/span-->
+        </div><!--/span-->
+        <footer class="row-fluid">
+            <div class="span3">
+            <ul class="nav nav-list">
+                <li class="nav-header">Arquitect</li>
+                <li><a href="#">Ultimas Imagenes</a></li>
+                <li><a href="#">Ultimos Documentos</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            </div>
+
+            <div class="span2">
+            <ul class="nav nav-list">
+                <li class="nav-header">Arquitect</li>
+                {{ cloud }}
+                <!-- <li><a href="#">Link text 1</a></li>
+                <li><a href="#">Link text 2</a></li>
+                <li><a href="#">Link text 3</a></li> -->
+            </ul>
+            </div>
+
+            <div class="span2">
+            <ul class="nav nav-list">
+                <li class="nav-header">Arquitect</li>
+                <li><a href="#">Link text 1</a></li>
+                <li><a href="#">Link text 2</a></li>
+                <li><a href="#">Link text 3</a></li>
+            </ul>
+            </div>
+            <div class="span4"></div>
+        </footer>
+        <div class="row-fluid">
+            <small class="derechos span8">
+                &copy; Escuela de Arquitectura Universidad del Bío-Bio 2012.
+            </small>
+        </div>
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-transition.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-tab.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-button.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="/static/bootstrap/js/bootstrap-typeahead.js"></script>
+    {% block media_js %}{% endblock %}
+</body>
+</html>
