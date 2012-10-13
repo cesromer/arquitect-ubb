@@ -13,7 +13,7 @@ class Entry(models.Model):
     entry_author= models.ForeignKey(User, verbose_name=u'Autor', null=True, blank=True)
     entry_tag   = TaggableManager()
     entry_title = models.CharField(verbose_name='Titulo', max_length=200)
-    entry_slug  = models.SlugField()
+    entry_slug  = models.SlugField(verbose_name='Slug', unique=True)
     entry_desc  = models.TextField(verbose_name='Descripcion')
     #entry_content = ContentType.objects.get_for_model(User)
     def __unicode__(self):
@@ -36,7 +36,7 @@ class Document(Entry):
     #entry_imagen = models.ImageField(upload_to='documents', verbose_name=u'Imagen')
     entry_imagen = ThumbnailerImageField(upload_to='documents/', verbose_name=u'Document',
         default='documents/doc_default.jpg')
-    entry_document = models.FileField(upload_to='documents/', verbose_name=u'Document')
+    entry_document = models.FileField(upload_to='documents/', verbose_name=u'Documento')
     def miniatura(self):
         image_path = get_thumbnailer(self.entry_imagen)['admin_thumb'].url
         return u'<img src="%s" alt="Link"/>' % image_path

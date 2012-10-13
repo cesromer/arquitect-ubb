@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Escuela de Arquitectura - Universidad del Bío-Bio{% endblock %}
+
+{% block content %}
+          <div class="latest row">
+            <h3 class="nav-header">Todas las Etiquetas</h3>
+            {% for tag in resultados %}
+                <a href="/tags/{{tag}}"><span class="label">{{tag}}</span></a>
+            {% endfor%}
+        </div>
+{% endblock %}

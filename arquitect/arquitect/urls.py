@@ -9,7 +9,13 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'arquitect.views.home', name='home'),
     url(r'^$', 'homepage.views.home', name='Pagina Inicial'),
+    url(r'^imagenes/(?P<slug>[-\w]+)$', include('homepage.urls')),
+    url(r'^tags/(?P<tagg>[- \w]+)$', 'homepage.views.tagged'),
+    url(r'^documentos/(?P<slug>[-\w]+)$', 'homepage.views.single_doc'),
+    url(r'^tags/$', 'homepage.views.all_tags'),
+    url(r'^documentos/$', 'homepage.views.all_docs'),
     url(r'^contacto/$', 'homepage.views.contact', name='Contacto'),
+    url(r'^busqueda/$', 'homepage.views.search', name="Busqueda"),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

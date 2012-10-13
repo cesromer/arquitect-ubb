@@ -1,14 +1,55 @@
 .latest{
-    margin: 15px 5px;
+    margin: 0px 5px;
+    padding: 0px;
+}
+
+footer{
+    padding-left: 25px;
+}
+
+.footercol{
+    display: block;
+    width: 220px;
+    float: left;
+    padding: 5px;
 }
 
 .derechos{
     margin-top: 10px;
+    margin-bottom: 10px;
     border-top: 2px solid #E10000;
 }
 
 .navbar-inverse .nav .active > a:hover{
     background-color: red;
+}
+
+form input{
+    width: 115px;
+}
+
+li .nav-header:hover{
+    text-decoration: none;
+}
+
+.navbar .nav{
+    margin-left: -15px;
+}
+
+.navbar .nav > li {
+    padding: 35px 0px 0px 5px;
+}
+
+.navbar .brand{
+    margin-left: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 0px;
+}
+
+.login{
+    margin-left: 155px;
+    width: 125px;
 }
 
 .thumbnail > h5{
@@ -39,12 +80,14 @@
 }
 
 .top_nav{
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #66b2b2;
 }
 
 .destacado{
     width: 660px;
     height: 450px;
+    margin: 10px;
+    margin-left: 30px;
 }
 
 .thumbnail a:hover{

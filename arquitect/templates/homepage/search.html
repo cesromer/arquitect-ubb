@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>
+    {% if not resultados %}
+        <div class="alert alert-info">
+            No hay resultados para la busqueda.
+        </div>
+    {% else %}
+        <h5>Resultados:</h5>
+        <ul class="thumbnails">
+            {% for imagen in resultados %}
+            <li>
+                <div class="thumbnail">
+                    <a href="/imagenes/{% filter lower %}{{ imagen.entry_slug }}{% endfilter %}">
+                            <img src="{{ imagen.site_thumb }}" alt="">
+                    </a>
+                </div>
+            </li>
+                {% if forloop.counter0 == 4 %}
+                    </ul>
+                    <ul class="thumbnails row">
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</p>
+{% endblock %}

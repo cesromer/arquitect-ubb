@@ -39,13 +39,17 @@
             </ul>
           </div>
           </div> -->
-          <div class="top_nav span9 container-fluid offset2">
+          <div class="top_nav span9 container offset2">
             <ul class="nav">
-              <li><a class="brand" href="/">Arquitect</a></li>
-              <li class="active"><a href="/">Inicio</a></li>
+                <a class="brand" href="/">
+                <img style="background-color: gray;"
+                    src="/static/img/logo.png">
+                </a>
+              <li><a class="brand" href="/">Escuela de Arquitectura</a></li>
+              <li><a href="/">Inicio</a></li>
               <li><a href="#about">Sobre</a></li>
               <li><a href="/contacto/">Contacto</a></li>
-              <div class="login span1 offset4">
+              <div class="login span1 offset1">
                 <ul class="nav">
                   <li class="active">
                     <!-- <a id="login" href="#">Login</a> -->
@@ -53,7 +57,7 @@
  <div class="modal hide fade" id="loginModal">
   <div class="modal-header">
     <a class="close" data-dismiss="modal">×</a>
-    <h3>Login Form</h3>
+    <h3>Iniciar Sesion</h3>
   </div>
   <div class="modal-body"><!-- el contenido viene de login.html --></div>
   <div class="modal-footer"> </div>
@@ -71,36 +75,52 @@
           </div>
           <div class="span2"></div>
     </div>
-    <div class="container-fluid offset2">
-        <div class="row-fluid">
+    <div class="container offset2">
+        <div class="row">
             <div class="span7">
                 {% block content %}{% endblock %}
             </div><!-- end photos -->
-            <div class="span3">
-            <div class="well sidebar-nav">
-              <ul class="nav nav-list">
-                <li class="nav-header">Sidebar</li>
-                <li class="active"><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li class="nav-header">Sidebar</li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li class="nav-header">Sidebar</li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-              </ul>
-            </div><!--/.well -->
+            <div class="span2">
+                <div class="well sidebar-nav">
+                  <ul class="nav nav-list">
+                    <li class="nav-header">Buscador</li>
+                    <li>
+                        <form method="post" action="/busqueda/">
+                        {% csrf_token %}
+                        <div class="input-prepend input-append">
+                        <button class="btn" type="submit"><i class="icon-search"></i></button>
+                        <input name="buscado" id="appendedPrependedInput"
+                        placeholder="Buscar..." type="text">
+                        </div>
+                        </form>
+                    </li>
+                    <!--<a href="/tags/"><li class="nav-header" style="color: blue;">Etiquetas</li></a>-->
+                     {% if not pop_tags %}
+                        <li><small>No hay Etiquetas</small></li>
+                    {% endif %}
+                    <li><a style="font-size:12px;" href="/tags/">Imagenes</a></li>
+                    {% for t in pop_tags %}
+                        <li><a href="/tags/{{t}}"><i class="icon-camera"></i>{{ t }}
+                        </a></li>
+                    {% endfor %}
+                    <a href="/documentos/"><li class="nav-header">Documentos</li></a>
+                    {% if not pop_docs %}
+                        <li><small>No hay documentos</small></li>
+                    {% endif %}
+                    {% for d in pop_docs %}
+                        <li><a href="/documentos/{{d.entry_slug}}"><i class="icon-folder-open"></i>{{ d.entry_title }}</a></li>
+                    {% endfor %}
+                    <li class="nav-header">Sidebar</li>
+                    <li><a href="#">Link page</a></li>
+                    <li><a href="#">Link page</a></li>
+                    <li><a href="#">Link page</a></li>
+                  </ul>
+                </div><!--/.well -->
+            </div><!--/span-->
         </div><!--/span-->
-        </div><!--/span-->
-        <footer class="row-fluid">
-            <div class="span3">
+        <!--
+        <footer class="row">
+            <div class="footercol">
             <ul class="nav nav-list">
                 <li class="nav-header">Arquitect</li>
                 <li><a href="#">Ultimas Imagenes</a></li>
@@ -111,16 +131,19 @@
             </div>
 
             <div class="span2">
-            <ul class="nav nav-list">
+             <ul class="nav nav-list">
                 <li class="nav-header">Arquitect</li>
-                {{ cloud }}
-                <!-- <li><a href="#">Link text 1</a></li>
+                {% for tag in cloud %}
+                    <a href="/tag/{{ tag.name }}">{{ tag.name }}</a>
+                    <small>{{ tag.num_times }}</small>
+                {% endfor %}
+                 <li><a href="#">Link text 1</a></li>
                 <li><a href="#">Link text 2</a></li>
-                <li><a href="#">Link text 3</a></li> -->
-            </ul>
+                <li><a href="#">Link text 3</a></li>
+             </ul>
             </div>
 
-            <div class="span2">
+            <div class="footercol">
             <ul class="nav nav-list">
                 <li class="nav-header">Arquitect</li>
                 <li><a href="#">Link text 1</a></li>
@@ -128,11 +151,16 @@
                 <li><a href="#">Link text 3</a></li>
             </ul>
             </div>
+             <div class="span1">
+                12345678901234567890
+            </div>
+
             <div class="span4"></div>
         </footer>
-        <div class="row-fluid">
-            <small class="derechos span8">
-                &copy; Escuela de Arquitectura Universidad del Bío-Bio 2012.
+        -->
+        <div class="row">
+            <small class="derechos span7">
+                &copy; Escuela de Arquitectura Universidad del Bío-Bío, Avda Collao #1202, Concepción fono:41-2731328 escarqui@ubiobio.cl
             </small>
         </div>
     </div><!--/.fluid-container-->

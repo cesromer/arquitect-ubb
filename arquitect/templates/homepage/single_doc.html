@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>
+    {% if not single %}
+        <div class="alert alert-info">
+            No hay resultados para la busqueda.
+        </div>
+    {% else %}
+        <h1>{{ single.entry_title }}</h1>
+        <img src="/media/{{single.entry_imagen}}">
+        <h6><a href="/media/{{single.entry_document}}">Descargar</a></h6>
+        <p><h6>Descripción:</h6>
+            {{single.entry_desc}}
+        </p>
+        <p>
+            <h6>Tags:</h6>
+            {% for tag in tags %}
+                <span class="label">{{tag}}</span>
+            {% endfor%}
+        </p>
+    {% endif %}
+
+</p>
+{% endblock %}

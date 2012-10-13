@@ -1,26 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}Pagina Principal{% endblock %}
+{% block title %}Escuela de Arquitectura - Universidad del Bío-Bio{% endblock %}
 
 {% block content %}
-          <div class="row-fluid">
-            <img class="img-polaroid destacado" src="/static/img/mainphoto.jpg">
+          <div class="row">
+            <img class="destacado" src="/static/img/mainphoto.jpg">
           </div>
-          <div class="latest row-fluid">
-            <ul class="thumbnails row-fluid">
-                {% for doc in docs %}
-                <li class="span2">
+          <div class="latest row">
+            <h3 class="nav-header">Ultimas Publicaciones</h3>
+            <ul class="thumbnails">
+                {% for imagen in ultimas %}
+                <li>
                     <div class="thumbnail">
-                        <a href="/publicaciones/{% filter lower %}{{ doc.entry_slug }}{% endfilter %}">
-                            <div class="img-polaroid">
-                                <img src="{{ doc.site_thumb }}" alt="">
-                            </div>
+                        <a href="/imagenes/{% filter lower %}{{ imagen.entry_slug }}{% endfilter %}">
+                                <img src="{{ imagen.site_thumb }}" alt="">
                         </a>
                     </div>
                 </li>
-                    {% if forloop.counter0 == 5 %}
+                    {% if forloop.counter0 == 4 %}
                         </ul>
-                        <ul class="thumbnails row-fluid">
+                        <ul class="thumbnails row">
                     {% endif %}
                 {% endfor %}
             </ul>
