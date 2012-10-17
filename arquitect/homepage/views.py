@@ -23,11 +23,11 @@ def home(request):
 
     #tags = Image.entry_tag.all().append(Document.entry_tag.all())
     #tags = Image.entry_tag.most_common()[0:10] for cloud
-    pop_tags = Image.entry_tag.most_common()[0:5]
-    pop_docs = Document.objects.all()[0:5]
+    pop_tags = Image.entry_tag.most_common()
+    pop_docs = Document.objects.all()
 
     vars = {
-        'ultimas': Image.objects.all()[0:10],
+        'ultimas': Image.objects.all()[0:12],
         'pop_tags': pop_tags,
         'pop_docs': pop_docs
     }
@@ -40,7 +40,7 @@ def search(request):
         buscar = res.getlist('buscado')
         res = Image.objects.filter(entry_tag__name__in=buscar)
 
-    pop_tags = Image.entry_tag.most_common()[0:5]
+    pop_tags = Image.entry_tag.most_common()
     pop_docs = Document.objects.all()[0:5]
 
     vars = {
@@ -54,7 +54,7 @@ def search(request):
 def all_tags(request):
     #obj = Image.objects.get(entry_tag=tagg)
     res = Image.entry_tag.all()
-    pop_tags = Image.entry_tag.most_common()[0:5]
+    pop_tags = Image.entry_tag.most_common()
     pop_docs = Document.objects.all()[0:5]
 
     vars = {
@@ -68,7 +68,7 @@ def all_tags(request):
 def all_docs(request):
     #obj = Image.objects.get(entry_tag=tagg)
     res = Document.objects.all()
-    pop_tags = Image.entry_tag.most_common()[0:5]
+    pop_tags = Image.entry_tag.most_common()
     pop_docs = Document.objects.all()[0:5]
 
     vars = {
@@ -87,7 +87,7 @@ def tagged(request, tagg):
     lista.append(tagg)
     res = Image.objects.filter(entry_tag__name__in=lista)
     print(res)
-    pop_tags = Image.entry_tag.most_common()[0:5]
+    pop_tags = Image.entry_tag.most_common()
     pop_docs = Document.objects.all()[0:5]
 
     vars = {
@@ -115,7 +115,7 @@ def single_doc(request, slug):
 
     #tags = Image.entry_tag.all().append(Document.entry_tag.all())
     #tags = Image.entry_tag.most_common()[0:10] for cloud
-    pop_tags = Image.entry_tag.most_common()[0:5]
+    pop_tags = Image.entry_tag.most_common()
     pop_docs = Document.objects.all()[0:5]
 
     vars = {
@@ -145,7 +145,7 @@ def single_img(request, slug):
 
     #tags = Image.entry_tag.all().append(Document.entry_tag.all())
     #tags = Image.entry_tag.most_common()[0:10] for cloud
-    pop_tags = Image.entry_tag.most_common()[0:5]
+    pop_tags = Image.entry_tag.most_common()
     pop_docs = Document.entry_tag.most_common()[0:5]
 
     vars = {

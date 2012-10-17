@@ -175,6 +175,6 @@ EMAIL_USE_TLS = True
 THUMBNAIL_ALIASES = {
     '': {
         'admin_thumb': {'size': (100, 60), 'crop': True},
-        'site_thumb': {'size': (100, 100), 'crop': True},
+        'site_thumb': {'size': (85, 90), 'crop': True},
     },
 }
