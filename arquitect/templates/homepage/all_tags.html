@@ -1,12 +1,26 @@
 {% extends "base.html" %}
-
+{% load pagination_tags %}
 {% block title %}Escuela de Arquitectura - Universidad del Bío-Bio{% endblock %}
 
 {% block content %}
           <div class="latest row">
-            <h3 class="nav-header">Todas las Etiquetas</h3>
+            <h3 class="nav-header">Todas las imagenes</h3>
+            <ul class="thumbnails row">
+            {% autopaginate imagenes 18 %}
+            {% for im in imagenes %}
+                <li>
+                    <div class="thumbnail span1">
+                        <a href="/imagenes/{% filter lower %}{{ im.entry_slug }}{% endfilter %}">
+                                <img src="{{ im.site_thumb }}" alt="">
+                        </a>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+            <div class="nav-header">{% paginate %}</div>
+            <h3 class="nav-header">Etiquetas</h3>
             {% for tag in resultados %}
                 <a href="/tags/{{tag}}"><span class="label">{{tag}}</span></a>
-            {% endfor%}
+            {% endfor %}
         </div>
 {% endblock %}

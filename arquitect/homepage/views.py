@@ -54,13 +54,15 @@ def search(request):
 def all_tags(request):
     #obj = Image.objects.get(entry_tag=tagg)
     res = Image.entry_tag.all()
+    imagenes = Image.objects.all()
     pop_tags = Image.entry_tag.most_common()
     pop_docs = Document.objects.all()[0:5]
 
     vars = {
         'pop_tags': pop_tags,
         'pop_docs': pop_docs,
-        'resultados': res
+        'resultados': res,
+        'imagenes': imagenes
     }
     contexto = RequestContext(request)
     return render_to_response('homepage/all_tags.html', vars, contexto)
