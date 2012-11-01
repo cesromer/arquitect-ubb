@@ -23,7 +23,7 @@ class BlogPostHandler(BaseHandler):
     def update(self, request, post_slug):
         post = Image.objects.get(entry_slug=post_slug)
 
-        post.entry_title = request.PUT.get('title')
+        post.entry_title = request.PUT.get('entry_title')
         post.save()
 
         return post
@@ -31,7 +31,7 @@ class BlogPostHandler(BaseHandler):
     def delete(self, request, post_slug):
         post = Image.objects.get(entry_slug=post_slug)
 
-        if not request.user == post.author:
+        if not request.user == post.entry_author:
             return rc.FORBIDDEN # returns HTTP 401
 
         post.delete()
