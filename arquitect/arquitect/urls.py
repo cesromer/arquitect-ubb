@@ -8,6 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'arquitect.views.home', name='home'),
+    url(r'^api/', include('api.urls')),
     url(r'^$', 'homepage.views.home', name='Pagina Inicial'),
     url(r'^imagenes/(?P<slug>[-\w]+)$', include('homepage.urls')),
     url(r'^tags/(?P<tagg>[- \w]+)$', 'homepage.views.tagged'),

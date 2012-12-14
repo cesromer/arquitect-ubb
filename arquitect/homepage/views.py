@@ -27,6 +27,7 @@ def home(request):
     pop_docs = Document.objects.all()
 
     vars = {
+        'principal': Image.objects.get(is_mainphoto='SI'),
         'ultimas': Image.objects.all()[0:12],
         'pop_tags': pop_tags,
         'pop_docs': pop_docs

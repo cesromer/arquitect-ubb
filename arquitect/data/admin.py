@@ -2,8 +2,8 @@ from django.contrib import admin
 from data.models import Document, Image, Entry
 
 class EntryAdminImage(admin.ModelAdmin):
-    fields = ['entry_title', 'entry_slug', 'entry_desc', 'entry_imagen','entry_tag']
-    list_display = ('entry_author', 'entry_title', 'entry_slug', 'entry_desc', 'miniatura')
+    fields = ['entry_title', 'entry_slug', 'is_mainphoto', 'entry_desc', 'entry_imagen','entry_tag']
+    list_display = ('entry_author', 'entry_title', 'entry_slug','is_mainphoto','entry_desc', 'miniatura')
     #prepopulated_fields = { 'entry_author' : 'cesar' }
     prepopulated_fields = { 'entry_slug': ['entry_title'] }
 
