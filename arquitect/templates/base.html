@@ -69,42 +69,33 @@
                         </div>
                         </form>
                     </li>
-                     {% if not pop_tags %}
-                        <li><small>No hay Etiquetas</small></li>
-                    {% endif %}
-                    <li><a style="font-size:14px;" href="/tags/">Imagenes</a></li>
-                    <li>
-                        <div id="imgsCanvasContainer">
-                            <canvas width="170" height="210" id="imgCanvas">
-                                <p>ada</p>
-                            </canvas>
-                        </div>
-                    </li>
-                </ul>
-                    <div id="tags">
-                    <ul>
-                    {% for t in pop_tags %}
-                        <li><a href="/tags/{{t}}"><i class="icon-camera"></i>{{ t }}
-                        </a></li>
-                    {% endfor %}
-                    </ul>
+                  </ul>
+                  <ul class="tags nav nav-list">
+                    <li><a style="font-size:14px;" href="/tags/">Etiquetas</a></li>
+                      {% if not pop_tags %}
+                          <li><small>No hay Etiquetas</small></li>
+                      {% endif %}
+                      <div id="tags">
+                      <ul>
+                        {% for t in pop_tags %}
+                        <li>
+                          <a href="/tags/{{t}}"><i class="icon-camera"></i>{{ t }}</a>
+                        </li>
+                        {% endfor %}
+                      </ul>
                     </div>
-                    <ul class="nav nav-list">
+                  </ul>
+                  <ul class="docs nav nav-list">
                     <li><a style="font-size:14px;" href="/documentos/">Documentos</a></li>
                     {% if not pop_docs %}
                         <li><small>No hay documentos</small></li>
                     {% endif %}
-                    <li>
-                        <div id="docsCanvasContainer">
-                            <canvas width="170" height="210" id="docCanvas">
-                                <p>ada</p>
-                            </canvas>
-                        </div>
-                    </li>
                     <div id="docs">
                     <ul>
                     {% for d in pop_docs %}
-                        <li><a href="/documentos/{{d.entry_slug}}"><i class="icon-folder-open"></i>{{ d.entry_title }}</a></li>
+                        <li>
+                          <a href="/documentos/{{d.entry_slug}}"><i class="icon-folder-open"></i>{{ d.entry_title }}</a>
+                        </li>
                     {% endfor %}
                     </ul>
                   </ul>
@@ -120,35 +111,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/static/js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        if(!$('#imgCanvas').tagcanvas({
-          textColour: 'gray',
-          outlineColour: '#000',
-          reverse: true,
-          depth: 0.005,
-          radiusX: 2 ,
-          offsetX: 25,
-          maxSpeed: 0.02
-        },'tags')) {
-          // something went wrong, hide the canvas container
-          $('#imgsCanvasContainer').hide();
-        }
-        if(!$('#docCanvas').tagcanvas({
-          textColour: 'gray',
-          outlineColour: '#ff00ff',
-          reverse: true,
-          depth: 0.005,
-          radiusX: 2 ,
-          offsetX: 25,
-          maxSpeed: 0.02
-        },'docs')) {
-          // something went wrong, hide the canvas container
-          $('#docsCanvasContainer').hide();
-        }
-
-      });
-    </script>
+    
     <script src="/static/bootstrap/js/bootstrap-transition.js"></script>
     <script src="/static/bootstrap/js/bootstrap-alert.js"></script>
     <script src="/static/bootstrap/js/bootstrap-modal.js"></script>
